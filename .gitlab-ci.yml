@@ -9,8 +9,10 @@ before_script:
 # Master
 build-master:
   stage: build
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE/php
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE/php" .
-    - docker push "$CI_REGISTRY_IMAGE/php"
+    - docker build --pull -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
   only:
     - master
